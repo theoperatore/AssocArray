@@ -38,7 +38,27 @@ Basic use involves declaring an instance of the AssocArray<E> implementation of 
 	//or have even more fun by utilizing the Associative Power!
 	System.out.println(list.get("last") + ", " + list.get("first") + " " + list.get("middle"));
 
+
+Overall methods available to the AssocArray can be viewed by in the AssocArrayInterface.java file; Included:
+
+	void add(String key, E item) 		//add an item with type E, accessed by String key
+
+	E first()							//return the first element value in the list
+	E last()							//return the last element value in the list
+	E get(String key)					//return the element value with the given key
+	E get(int index)					//return the element value from the giving index position
+
+	boolean remove(String key)			//true if removal of element with the given key succeeds; resizes array 
+	boolean remove(int index)			//true if removal of element with given index succeeds; resizes array
+
+	boolean isEmpty()					//returns true if there are no elements contained in the array
+	int length()						//returns the number of elements in the AssocArray
+
+	Iterator<E> iterator()				//returns an iterator for the AssocArray
+
 TODO
 ====
 
-Add Functionality to create AssocArrays by passing in collections or hashmaps.
+- Add Functionality to create AssocArrays by passing in collections or hashmaps.
+
+
