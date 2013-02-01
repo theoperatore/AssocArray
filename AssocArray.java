@@ -1,4 +1,4 @@
-package assocArray;
+package AssocArray;
 
 import java.util.Iterator;
 
