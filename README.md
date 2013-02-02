@@ -35,6 +35,9 @@ Basic use involves declaring an instance of the AssocArray<E> implementation of 
 	//or have even more fun by utilizing the Associative Power!
 	System.out.println(list.get("last") + ", " + list.get("first") + " " + list.get("middle"));
 
+	//can export as HashMap
+	HashMap<String, String> map = list.export();
+
 
 Overall methods available to the AssocArray can be viewed by in the AssocArrayInterface.java file; Included:
 
