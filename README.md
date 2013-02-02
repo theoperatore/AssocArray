@@ -16,32 +16,25 @@ Implementation
 
 Basic use involves declaring an instance of the AssocArray<E> implementation of the AssocArrayInterface<E>:
 
-	//basic use of the class: Keys are type String, Values are type <E>
-	public AssocArrayInterface<E> gargantua = new AssocArray<E>();
+	public AssocArrayInterface<E> gargantua = new AssocArray<E>(); 			//basic use of the class: Keys are type String, Values are type <E>
 	
 	//Examples:
 
-	//make a new variable reference to the interface and create a new AssocArray implementation
-	public AssocArrayInterface<String> list = new AssocArray<String>();
+	public AssocArrayInterface<String> list = new AssocArray<String>();		//create a new reference and assign the AssocArray implementation
 
-	//add items to the array through the syntax: var.add("key", value) where "key" is a string and value is of the type <E>
-	list.add("first", "Al");
-	list.add("last", "Petersen");
+	list.add("first", "Al");												//add values to array
+	list.add("last", "Petersen");											//syntax: var.add("key", value);
 	list.add("middle", "N");
 
-	//grab an iterator...
-	Iterator<String> i = list.iterator();
+	Iterator<String> i = list.iterator();									//grab an iterator...
 
-	//and iterate through the heaps of fun! (using standard indexing notation)
-	while (i.hasNext()) {
+	while (i.hasNext()) {													//...and iterate through the heaps of fun!
 		System.out.println(i.next());
 	}
 
-	//or have even more fun by utilizing the Associative Power!
-	System.out.println(list.get("last") + ", " + list.get("first") + " " + list.get("middle"));
+	String o = list.get("last") + list.get("first") + list.get("middle")	//or have even more fun by utilizing the power of Association!
 
-	//can export as HashMap
-	HashMap<String, String> map = list.export();
+	HashMap<String, String> map = list.export();							//export as a crazy HashMap
 
 
 Overall methods available to the AssocArray can be viewed by in the AssocArrayInterface.java file; Included:
