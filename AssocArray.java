@@ -1,7 +1,7 @@
 package AssocArray;
 
+
 import java.util.Iterator;
-import java.util.*;
 
 
 /**
@@ -126,7 +126,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public boolean remove(String key) {
+	public boolean remove(String key) throws IndexOutOfBoundsException {
 		int index = -1;
 		for(int i = 0; i < this.keys.length; i++) {
 			if (this.keys[i] == key) {
@@ -160,7 +160,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public boolean remove(int index) {
+	public boolean remove(int index) throws IndexOutOfBoundsException {
 		if (index <= this.values.length && index >= 0) {
 			String[] tempS = new String[numItems-1];
 			E[] tempE = (E[])new Object[numItems-1];
@@ -190,5 +190,78 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	 */
 	public Iterator<E> iterator() {
 		return new AssocArrayIterator<E>(this);
+	}
+
+	/**
+	 * Remove an element with the given key and return the value
+	 */
+	public E getRemove(String key) throws IndexOutOfBoundsException {
+		int index = -1;
+		E rTemp = null;
+		for(int i = 0; i < this.keys.length; i++) {
+			if (this.keys[i] == key) {
+				index = i;
+				rTemp = this.values[i];
+			}
+		}
+		
+		if (index != -1) {
+			String[] tempS = new String[numItems - 1];
+			E[] tempE = (E[])new Object[numItems - 1];
+		
+			for (int i = 0; i < index; i++) {
+				tempS[i] = this.keys[i];
+				tempE[i] = this.values[i];
+			}
+			
+			for (int i = index; i <= this.keys.length - 2; i++) {
+				tempS[i] = this.keys[i+1];
+				tempE[i] = this.values[i+1];
+			}
+			
+			this.keys = tempS;
+			this.values = tempE;
+			
+			this.numItems -= 1;
+			
+			return rTemp;
+		} else {
+			throw new IndexOutOfBoundsException();
+		}
+		
+		
+	}
+
+	/**
+	 * Remove the element with the given index and return the value
+	 */
+	public E getRemove(int index)  throws IndexOutOfBoundsException {
+		if (index <= this.values.length && index >= 0) {
+			String[] tempS = new String[numItems-1];
+			E[] tempE = (E[])new Object[numItems-1];
+			
+			E rTemp = values[index];
+		
+			for (int i = 0; i < index; i++) {
+				tempS[i] = this.keys[i];
+				tempE[i] = this.values[i];
+			}
+			
+			for (int i = index; i <= this.keys.length - 2; i++) {
+				tempS[i] = this.keys[i+1];
+				tempE[i] = this.values[i+1];
+			}
+			
+			this.keys = tempS;
+			this.values = tempE;
+			
+			this.numItems -= 1;
+			
+			return rTemp;
+		}
+		else {
+			throw new IndexOutOfBoundsException();
+		}
+		
 	}
 }

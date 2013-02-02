@@ -8,11 +8,7 @@ Features
 
 - Allows for an array to be associative
 - Dynamic in Size
-
-Use
-===
-
-Because I made this to see if I could (and because I thought it would be cool) feel free to go wild.
+- Null as a value is allowed
 
 Implementation
 ==============
@@ -51,10 +47,18 @@ Overall methods available to the AssocArray can be viewed by in the AssocArrayIn
 	boolean remove(String key)			//true if removal of element with the given key succeeds; resizes array 
 	boolean remove(int index)			//true if removal of element with given index succeeds; resizes array
 
+	E getRemove(String key)				//remove the element with the given key and return the value; resizes array
+	E getRemove(int index)				//remove the element with the given index and return the value; resizes array
+
 	boolean isEmpty()					//returns true if there are no elements contained in the array
 	int length()						//returns the number of elements in the AssocArray
 
 	Iterator<E> iterator()				//returns an iterator for the AssocArray
+
+Use
+===
+
+Because I made this to see if I could (and because I thought it would be cool) feel free to go wild.
 
 TODO
 ====

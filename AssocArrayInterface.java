@@ -11,12 +11,14 @@ public interface AssocArrayInterface<E> {
 	//retrieve methods
 	E first()          throws IndexOutOfBoundsException;
 	E last()           throws IndexOutOfBoundsException;
-	E get(String key)  throws NullPointerException;
+	E get(String key)  throws IndexOutOfBoundsException;
 	E get(int index)   throws IndexOutOfBoundsException;
 	
 	//remove methods
-	boolean remove(String key);
-	boolean remove(int index);
+	boolean remove(String key) throws IndexOutOfBoundsException;
+	boolean remove(int index)  throws IndexOutOfBoundsException;
+	E getRemove(String key)    throws IndexOutOfBoundsException;
+	E getRemove(int index)     throws IndexOutOfBoundsException;
 	
 	//helper methods
 	boolean isEmpty();
