@@ -9,6 +9,7 @@ Features
 - Allows for an array to be associative
 - Dynamic in Size
 - Null as a value is allowed
+- Ability to export as a HashMap<String, E>
 
 Implementation
 ==============
