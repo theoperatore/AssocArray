@@ -53,6 +53,8 @@ Overall methods available to the AssocArray can be viewed by in the AssocArrayIn
 	boolean isEmpty()					//returns true if there are no elements contained in the array
 	int length()						//returns the number of elements in the AssocArray
 
+	HashMap<String, E> export()			//returns a HashMap of the AssocArray
+
 	Iterator<E> iterator()				//returns an iterator for the AssocArray
 
 Use
@@ -60,9 +62,5 @@ Use
 
 Because I made this to see if I could (and because I thought it would be cool) feel free to go wild.
 
-TODO
-====
-
-- Add Functionality to integrate AssocArrays with hashmaps.
 
 

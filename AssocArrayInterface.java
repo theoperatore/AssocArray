@@ -1,6 +1,6 @@
 package AssocArray;
 
-import java.util.Iterator;
+import java.util.*;
 
 
 public interface AssocArrayInterface<E> {
@@ -23,7 +23,9 @@ public interface AssocArrayInterface<E> {
 	//helper methods
 	boolean isEmpty();
 	int lenght();
+	HashMap<String, E> export();
 	
 	//get Iterator
 	Iterator<E> iterator();
+
 }

@@ -1,7 +1,7 @@
 package AssocArray;
 
 
-import java.util.Iterator;
+import java.util.*;
 
 
 /**
@@ -264,4 +264,19 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 		}
 		
 	}
+
+	/**
+	 * Returns a HashMap of the AssocArray
+	 */
+	public HashMap<String, E> export() {
+		HashMap<String, E> map = new HashMap<String, E>();
+		
+		for (int i = 0; i < this.lenght(); i++) {
+			map.put(this.keys[i], this.values[i]);
+		}
+		
+		return map;
+	}
+
+
 }
