@@ -15,7 +15,12 @@ Implementation
 ==============
 
 Basic use involves declaring an instance of the AssocArray<E> implementation of the AssocArrayInterface<E>:
+
+	//basic use of the class: Keys are type String, Values are type <E>
+	public AssocArrayInterface<E> gargantua = new AssocArray<E>();
 	
+	//Examples:
+
 	//make a new variable reference to the interface and create a new AssocArray implementation
 	public AssocArrayInterface<String> list = new AssocArray<String>();
 
