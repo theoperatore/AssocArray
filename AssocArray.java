@@ -104,7 +104,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 		return this.values[this.values.length-1];
 	}
 
-	public E get(String key) throws NullPointerException {
+	public E get(String key) throws IndexOutOfBoundsException {
 		for(int i = 0; i < this.keys.length; i++) {
 			if (this.keys[i] == key) {
 				return this.values[i];
