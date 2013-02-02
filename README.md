@@ -32,7 +32,7 @@ Basic use involves declaring an instance of the AssocArray<E> implementation of 
 
 	//and iterate through the heaps of fun! (using standard indexing notation)
 	while (i.hasNext()) {
-		System.out.println(list.get(i));
+		System.out.println(i.next());
 	}
 
 	//or have even more fun by utilizing the Associative Power!
@@ -59,6 +59,6 @@ Overall methods available to the AssocArray can be viewed by in the AssocArrayIn
 TODO
 ====
 
-- Add Functionality to create AssocArrays by passing in collections or hashmaps.
+- Add Functionality to integrate AssocArrays with hashmaps.
 
 
