@@ -22,7 +22,7 @@ public interface AssocArrayInterface<E> {
 	
 	//helper methods
 	boolean isEmpty();
-	int lenght();
+	int length();
 	HashMap<String, E> export();
 	
 	//get Iterator

@@ -121,7 +121,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 		return this.numItems == 0;
 	}
 
-	public int lenght() {
+	public int length() {
 		return this.numItems;
 	}
 
