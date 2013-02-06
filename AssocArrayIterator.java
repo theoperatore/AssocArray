@@ -19,7 +19,7 @@ public class AssocArrayIterator<E> implements Iterator<E> {
 	*	Returns True if there is another element; False otherwise
 	**/
 	public boolean hasNext() {
-		return position < tempList.lenght();
+		return position < tempList.length();
 	}
 
 	/**
