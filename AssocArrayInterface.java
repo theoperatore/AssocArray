@@ -7,6 +7,7 @@ public interface AssocArrayInterface<E> {
 	
 	//add methods
 	boolean add(String key, E item);
+	boolean add(String key, E item, int position);
 	
 	//retrieve methods
 	E first()          throws IndexOutOfBoundsException;

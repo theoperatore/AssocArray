@@ -96,6 +96,52 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
+	public boolean add(String key, E item, int position) {
+		boolean contains = false;
+		for (int i = 0; i < this.keys.length; i++) {
+			if (keys[i] == key) {
+				contains = true;
+			}
+		}
+
+		if (!contains) {
+
+			// need to copy array up until the given position, then add the new item, then copy the rest of the array
+			//copy original arrays first into new arrays with size+1;
+			String[] tempS = new String[this.numItems + 1];
+			E[] tempO = (E[])(new Object[this.numItems + 1]);
+			
+			for (int i = 0; i < position; i++) {
+				if (this.keys[i] != null) {
+					tempS[i] = this.keys[i];
+				}
+				
+				if (this.values[i] != null) {
+					tempO[i] = this.values[i];
+				}
+			}
+
+			tempS[position] = key;
+			tempO[position] = item;
+
+			for (int i = position; i < this.keys.length; i++) {
+				tempS[i+1] = keys[i];
+				tempO[i+1] = values[i];
+			}
+
+			this.keys = tempS;
+			this.values = tempO;
+
+			this.numItems += 1;
+
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	public E first() throws IndexOutOfBoundsException {
 		return this.values[0];
 	}
@@ -195,6 +241,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	/**
 	 * Remove an element with the given key and return the value
 	 */
+	@SuppressWarnings("unchecked")
 	public E getRemove(String key) throws IndexOutOfBoundsException {
 		int index = -1;
 		E rTemp = null;
@@ -235,6 +282,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	/**
 	 * Remove the element with the given index and return the value
 	 */
+	@SuppressWarnings("unchecked")
 	public E getRemove(int index)  throws IndexOutOfBoundsException {
 		if (index <= this.values.length && index >= 0) {
 			String[] tempS = new String[numItems-1];
