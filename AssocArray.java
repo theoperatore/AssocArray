@@ -289,7 +289,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	 */
 	@SuppressWarnings("unchecked")
 	public E getRemove(int index)  throws IndexOutOfBoundsException {
-		if (index <= this.values.length && index >= 0) {
+		if (index < this.values.length && index >= 0) {
 			String[] tempS = new String[numItems-1];
 			E[] tempE = (E[])new Object[numItems-1];
 			
