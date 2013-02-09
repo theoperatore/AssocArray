@@ -156,11 +156,16 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 				return this.values[i];
 			}
 		}
-		return null;
+		throw new IndexOutOfBoundsException();
 	}
 	
 	public E get(int index) throws IndexOutOfBoundsException {
-		return this.values[index];
+		if(this.values[index] != null) {
+			return this.values[index];
+		}
+		else {
+			throw new IndexOutOfBoundsException();
+		}
 	}
 
 	public boolean isEmpty() {

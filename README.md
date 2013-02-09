@@ -73,4 +73,5 @@ Updates
 TODO
 ====
 
+* update error checking
 * make a merge utility method
