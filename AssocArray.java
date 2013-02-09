@@ -142,25 +142,25 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 		}
 	}
 
-	public E first() throws IndexOutOfBoundsException {
+	public E first() {
 		return this.values[0];
 	}
 
-	public E last() throws IndexOutOfBoundsException {
+	public E last() {
 		return this.values[this.values.length-1];
 	}
 
-	public E get(String key) throws IndexOutOfBoundsException {
+	public E get(String key) throws NullPointerException {
 		for(int i = 0; i < this.keys.length; i++) {
 			if (this.keys[i] == key) {
 				return this.values[i];
 			}
 		}
-		throw new IndexOutOfBoundsException();
+		throw new NullPointerException();
 	}
 	
 	public E get(int index) throws IndexOutOfBoundsException {
-		if(this.values[index] != null) {
+		if(index < numItems) {
 			return this.values[index];
 		}
 		else {
@@ -177,7 +177,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public boolean remove(String key) throws IndexOutOfBoundsException {
+	public boolean remove(String key) throws NullPointerException {
 		int index = -1;
 		for(int i = 0; i < this.keys.length; i++) {
 			if (this.keys[i] == key) {
@@ -207,12 +207,12 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 			return true;
 		}
 		
-		return false;
+		throw new NullPointerException();
 	}
 
 	@SuppressWarnings("unchecked")
 	public boolean remove(int index) throws IndexOutOfBoundsException {
-		if (index <= this.values.length && index >= 0) {
+		if (index < this.values.length && index >= 0) {
 			String[] tempS = new String[numItems-1];
 			E[] tempE = (E[])new Object[numItems-1];
 		
@@ -233,7 +233,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 			
 			return true;
 		}
-		return false;
+		throw new IndexOutOfBoundsException();
 	}
 
 	/**
@@ -247,7 +247,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	 * Remove an element with the given key and return the value
 	 */
 	@SuppressWarnings("unchecked")
-	public E getRemove(String key) throws IndexOutOfBoundsException {
+	public E getRemove(String key) throws NullPointerException {
 		int index = -1;
 		E rTemp = null;
 		for(int i = 0; i < this.keys.length; i++) {
@@ -278,7 +278,7 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 			
 			return rTemp;
 		} else {
-			throw new IndexOutOfBoundsException();
+			throw new NullPointerException();
 		}
 		
 		

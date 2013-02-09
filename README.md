@@ -69,9 +69,9 @@ Updates
 =======
 
 * new add method to add an item at a certain position; resizes array
+* updated error checking and exceptions thrown
 
 TODO
 ====
 
-* update error checking
 * make a merge utility method

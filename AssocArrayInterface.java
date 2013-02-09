@@ -10,15 +10,15 @@ public interface AssocArrayInterface<E> {
 	boolean add(String key, E item, int position);
 	
 	//retrieve methods
-	E first()          throws IndexOutOfBoundsException;
-	E last()           throws IndexOutOfBoundsException;
-	E get(String key)  throws IndexOutOfBoundsException;
+	E first();
+	E last();
+	E get(String key)  throws NullPointerException;
 	E get(int index)   throws IndexOutOfBoundsException;
 	
 	//remove methods
-	boolean remove(String key) throws IndexOutOfBoundsException;
+	boolean remove(String key) throws NullPointerException;
 	boolean remove(int index)  throws IndexOutOfBoundsException;
-	E getRemove(String key)    throws IndexOutOfBoundsException;
+	E getRemove(String key)    throws NullPointerException;
 	E getRemove(int index)     throws IndexOutOfBoundsException;
 	
 	//helper methods
