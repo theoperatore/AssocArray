@@ -6,7 +6,7 @@ import java.util.*;
 public interface AssocArrayInterface<E> {
 	
 	//add methods
-	boolean add(String key, E item);
+	void add(String key, E item);
 	boolean add(String key, E item, int position);
 	
 	//retrieve methods
