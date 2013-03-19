@@ -23,8 +23,11 @@ import java.util.*;
 public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	
 	private String[] keys;
+	private String[] skeys;
 	private E[] values;
+	private E[] svalues;
 	private int numItems;
+	private int carryIndex;
 	
 	private static final int INIT_SIZE = 10;
 	
@@ -35,8 +38,10 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	public AssocArray() {
 		this.keys = new String[INIT_SIZE];
 		this.values = (E[])(new Object[INIT_SIZE]);
+		this.skeys = new String[INIT_SIZE * 2];
+		this.svalues = (E[])(new Object[INIT_SIZE * 2]);
 		this.numItems = 0;
-		
+		this.carryIndex = 0;
 	}
 	
 	/**
@@ -47,7 +52,10 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	public AssocArray(int size) {
 		this.keys = new String[size];
 		this.values = (E[])(new Object[size]);
+		this.skeys = new String[INIT_SIZE * 2];
+		this.svalues = (E[])(new Object[INIT_SIZE * 2]);
 		this.numItems = 0;
+		this.carryIndex = 0;
 	}
 
 	/**
@@ -55,45 +63,47 @@ public class AssocArray<E> implements AssocArrayInterface<E>, Iterable<E> {
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
-	public boolean add(String key, E item) {
-		// add a new element to the end of the values array
-		// increment numItems by one
-		// add string index to the end of the keys array
-		String[] tempS = new String[this.numItems + 1];
-		E[] tempO = (E[])(new Object[this.numItems + 1]);
-		
-		for (int i = 0; i < keys.length; i++) {
-			if (this.keys[i] != null) {
-				tempS[i] = this.keys[i];
-			}
+	public void add(String key, E item) {
+		if (numItems >= values.length) {
 			
-			if (this.values[i] != null) {
-				tempO[i] = this.values[i];
-			}
-		}
-		
-		//only add new key/item if key hasn't been used already
-		boolean contains = false;
-		for (int i = 0; i < this.keys.length; i++) {
-			if (keys[i] == key) {
-				contains = true;
-			}
-		}
-		if (!contains) {
-			tempS[tempS.length - 1] = key;
-			tempO[tempO.length - 1] = item;
+			//assign the current arrays to point at the shadow arrays
+			keys   = skeys;
+			values = svalues;
+			
+			//create new shadowarrays
+			skeys   = (new String[keys.length * 2]);
+			svalues = (E[])(new Object[values.length * 2]);
+			
+			//reset the carry index
+			carryIndex = 0;
+			
+			//add the new item to the end of all the arrays
+			keys[numItems]    = key;
+			skeys[numItems]   = key;
+			values[numItems]  = item;
+			svalues[numItems] = item;
 
-			//the original array references are now pointing to the newly created
-			// temp array memory. 
-			this.keys = tempS;
-			this.values = tempO;
-			
-			this.numItems += 1;
-			
-			return true;
+
+			//copy a previous entry to the newly expanded shadow arrays
+			skeys[carryIndex]   = keys[carryIndex];
+			svalues[carryIndex] = values[carryIndex];
+		}
+		else {
+			//no expansion needed, just add the new item to all arrays
+			keys[numItems]    = key;
+			skeys[numItems]   = key;
+			values[numItems]  = item;
+			svalues[numItems] = item;
+
+			//copy a previous entry to the newly expanded shadow arrays
+			skeys[carryIndex]   = keys[carryIndex];
+			svalues[carryIndex] = values[carryIndex];
 		}
 		
-		return false;
+
+		//either way an Item was added, increase counts
+		numItems++;
+		carryIndex++;
 	}
 
 	@SuppressWarnings("unchecked")

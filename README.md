@@ -10,6 +10,7 @@ Features
 - Dynamic in Size
 - Null as a value is allowed
 - Ability to export as a HashMap<String, E>
+- Handles expansion of an array with a shadow
 
 Implementation
 ==============
@@ -39,7 +40,7 @@ Examples:
 
 Overall methods available to the AssocArray can be viewed by in the AssocArrayInterface.java file; Included:
 
-	boolean add(String key, E item) 			//add an item with type E, accessed by String key
+	void add(String key, E item) 				//add an item with type E, accessed by String key
 	boolean add(String key, E item, int pos)	//add an item with type E, accessed by String key, at position pos
 
 	E first()									//return the first element value in the list
@@ -70,6 +71,7 @@ Updates
 
 * new add method to add an item at a certain position; resizes array
 * updated error checking and exceptions thrown
+* updated expansion to use a shadow
 
 TODO
 ====
